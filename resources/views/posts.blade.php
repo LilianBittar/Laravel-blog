@@ -1,4 +1,8 @@
 <x-layout>
+    <div>
+        <a href="/post/create"><button>Create</button></a>
+    </div>
+
     @foreach ($posts as $post)
 
         <article class="{{$loop->even ? 'foobar' : ''}}">

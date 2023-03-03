@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,8 +22,14 @@ Route::get('/', function () {
 
 
 
-Route::get('posts/{post}', function ($id) {
+Route::get('posts/{post}', function (Post $post) {
     return view('post', [
-        'post' => Post::findOrFail($id)
+        'post' => $post
     ]);
 });
+
+Route::get('post/create', function () {
+    return view('create-post');
+});
+
+Route::post('create/post', 'App\Http\Controllers\PostController@create');
