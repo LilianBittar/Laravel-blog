@@ -20,7 +20,17 @@
             <label for="body">Body</label>
             <textarea id="body" type="text" name="body"></textarea>
         </div>
-<div> <button>Submit</button></div>
+       
+        <select  class="form-select" aria-label="Default select example" name="category_id">
+            <option selected>Select Category</option>
+            @foreach ($category_list as $category)
+            <option value="{{$category->id}}">{{$category->name}}</option>
+            @endforeach
+          </select>
+
+        <div> 
+            <button>Submit</button>
+        </div>
     </form>
 
 </x-layout>

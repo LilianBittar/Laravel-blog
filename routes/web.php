@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,8 @@ Route::get('posts/{post}', function (Post $post) {
 });
 
 Route::get('post/create', function () {
-    return view('create-post');
+    $categories = Category::all();
+    return view('create-post')->with(['category_list' => $categories]);
 });
 
 Route::post('create/post', 'App\Http\Controllers\PostController@create');

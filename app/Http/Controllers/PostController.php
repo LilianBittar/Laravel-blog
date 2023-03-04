@@ -12,7 +12,8 @@ class PostController extends Controller
                 'title' => $request->title,
                 'slug' => $request->slug,
                 'excerpt' => $request->excerpt,
-                'body' => $request->body
+                'body' => $request->body,
+                'category_id' => $request->category_id,
             )
             );
             $post->save();
