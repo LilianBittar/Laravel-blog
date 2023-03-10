@@ -17,11 +17,9 @@ use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('posts', [
-        'posts' => Post::all()
+        'posts' => Post::with('category')->get()
     ]);
 });
-
-
 
 Route::get('posts/{post}', function (Post $post) {
     return view('post', [
@@ -35,3 +33,9 @@ Route::get('post/create', function () {
 });
 
 Route::post('create/post', 'App\Http\Controllers\PostController@create');
+
+Route::get('categories/{category:slug}', function (Category $category) {
+    return view('posts', [
+        'posts' =>$category->posts
+    ]);
+});
